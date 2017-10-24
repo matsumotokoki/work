@@ -22,7 +22,7 @@ int main(void){
     printf("\x1b[36m\x1b[40m");
     printf("##################################################\n");
     printf("#                                                #\n");
-    printf("# Hello! Welcome to scientific calculatori!!     #\n");
+    printf("# Hello! Welcome to scientific calculator!!      #\n");
     printf("#                                                #\n");
     printf("# If this formula is empty,this proglam close !! #\n");
     printf("#                                                #\n");
@@ -105,9 +105,12 @@ double modif(char * c){
          set_k[p]=buffer;
          k=0;
         }
-        else if(c[i]=='+'||c[i]=='-'||c[i]=='*'||c[i]=='/'||c[i]=='^'||c[i]=='!'){     
+        else if(c[i]=='+'||c[i]=='-'||c[i]=='*'||c[i]=='/'||c[i]=='^'||c[i]=='!'){    
+            if(c[i]=='-'&&!isdigit(c[i-1])){}
+            else{
             p++;
-            buffer=0;           
+            }
+            buffer=0;
             set_k[p]=c[i]+one;
             i++;
             buffer=0;
@@ -140,7 +143,31 @@ double modif(char * c){
         }
     }
 
+for(i=0;set_k[i]!='\0';i++)printf("%lf ",set_k[i]);
+printf("\n");
+
     buffer=0.0; 
+    while(set_k[x]!='\0'&&frag_f==0){
+        if(set_k[0]=='-'+one){
+            x=1;
+            frag_f=1;
+        }
+        if(set_k[x]=='-'+one){
+            if(set_k[x-1]=='+'+one||set_k[x-1]=='-'+one||set_k[x-1]=='*'+one||set_k[x-1]=='/'+one||set_k[x-1]=='s'+'i'+'n'+one||set_k[x-1]=='c'+'o'+'s'+one||set_k[x-1]=='t'+'a'+'n'+one||set_k[x-1]=='a'+'s'+'i'+'n'+one||set_k[x-1]=='a'+'c'+'o'+'s'+one||set_k[x-1]=='a'+'t'+'a'+'n'+one||set_k[x-1]=='^'+one||set_k[x-1]=='l'+'o'+'g'+one||set_k[x-1]=='l'+'o'+'g'+'e'+one){
+            set_k[x]=-set_k[x+1];
+            fra++;
+            for(put=x+2;set_k[put]!='\0';put++)
+                set_k[put-1]=set_k[put];     
+            for(t=0;t<fra;t++)
+                set_k[p-t]='\0';
+            }           
+        }
+        x++;
+    }
+    p=p-fra;
+    fra=0;
+    frag_f=0;
+    x=0; 
     while(set_k[x]!='\0'){
         if(set_k[x]=='s'+'i'+'n'+one){
             set_k[x]=sin(set_k[x+1]*PI/180);
@@ -361,7 +388,8 @@ double modif(char * c){
     fra=0;
     frag_f=0;
     x=0; 
-
+for(i=0;set_k[i]!='\0';i++)printf("%lf ",set_k[i]);
+printf("\n");
     if(set_k[0]=='+'+one||set_k[0]=='-'+one||set_k[0]=='*'+one||set_k[0]=='/'+one||set_k[0]=='^'+one||set_k[0]=='!'+one){
         x=1;
         e=1;
@@ -452,7 +480,7 @@ void help(char * c){
     printf("\x1b[36m\x1b[40m");
     printf("##################################################\n");
     printf("#                                                #\n");
-    printf("# Hello! Welcome to scientific calculatori!!     #\n");
+    printf("# Hello! Welcome to scientific calculator!!      #\n");
     printf("#                                                #\n");
     printf("# If this formula is empty,this proglam close !! #\n");
     printf("#                                                #\n");
