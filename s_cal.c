@@ -452,7 +452,7 @@ void help(char * c){
     printf("\x1b[36m\x1b[40m");
     printf("##################################################\n");
     printf("#                                                #\n");
-    printf("# Hello! Welcome to scientific calculatori!!     #\n");
+    printf("# Hello! Welcome to scientific calculator!!      #\n");
     printf("#                                                #\n");
     printf("# If this formula is empty,this proglam close !! #\n");
     printf("#                                                #\n");
