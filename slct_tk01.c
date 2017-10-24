@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
 #include<ctype.h>
 #include<termios.h>
 #include<unistd.h>
@@ -39,18 +38,8 @@ int Slct(){
         tmp = fgetc(stdin);
         fprintf(stderr,"\033[%dA",3);
     }
-    fprintf(stderr,"\033[2K\r");
-    fprintf(stderr,"\033[%dD",1);
-    fprintf(stderr,"\033[2K\r");
-    fprintf(stderr,"\033[%dD",1);
-    fprintf(stderr,"\033[2K\r");
-    fprintf(stderr,"\033[%dD",1);
-    fprintf(stderr,"\033[2K\r");
-    fprintf(stderr,"\033[%dD",1);
-    fprintf(stderr,"\033[2K\r");
-    fprintf(stderr,"\033[%dD",1);
-    fprintf(stderr,"\033[2K\r");
-    fprintf(stderr,"\033[%dD",1);
+    fprintf(stderr,"\033[J");
+    fprintf(stderr,"\033[%dD",3);
     tcsetattr(STDIN_FILENO, TCSANOW, &save);
     return sw;
 }
