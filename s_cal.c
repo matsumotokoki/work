@@ -143,9 +143,6 @@ double modif(char * c){
         }
     }
 
-for(i=0;set_k[i]!='\0';i++)printf("%lf ",set_k[i]);
-printf("\n");
-
     buffer=0.0; 
     while(set_k[x]!='\0'&&frag_f==0){
         if(set_k[0]=='-'+one){
@@ -388,8 +385,6 @@ printf("\n");
     fra=0;
     frag_f=0;
     x=0; 
-for(i=0;set_k[i]!='\0';i++)printf("%lf ",set_k[i]);
-printf("\n");
     if(set_k[0]=='+'+one||set_k[0]=='-'+one||set_k[0]=='*'+one||set_k[0]=='/'+one||set_k[0]=='^'+one||set_k[0]=='!'+one){
         x=1;
         e=1;
