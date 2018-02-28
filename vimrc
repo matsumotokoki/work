@@ -20,24 +20,20 @@ set tabstop=2
 set hlsearch
 nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 syntax on
+set synmaxcol=150
 set whichwrap=b,s,h,l,<,>,[,],~
 set display=lastline
 nnoremap + <C-a>
 nnoremap - <C-x>
-set pumheight=20  "補完メニューの数
+set pumheight=10  "補完メニューの数
 "-----------------------------------------------------------------------------------------
-set completeopt=menuone
-for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
-				 exec "imap " . k . " " . k . "<C-N><C-P>"
-	endfor
-imap <expr> <TAB> pumvisible() ? "\<Down>" : "\<Tab>"
-"----------------------------------------------------------------------------------------------
-"-------------------------------------------------------------------------------------------
 "set completeopt=menuone
 "for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
-"				  exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
+"				 exec "imap " . k . " " . k . "<C-N><C-P>"
 "	endfor
-"-----------------------------------------------------------------------------------------------
+"imap <expr> <TAB> pumvisible() ? "\<Down>" : "\<Tab>"
+"-----------------------------------------------------------------------------------------
+
 "set clipboard=unnamed,unnamedplus
 set clipboard=unnamed,autoselect
 "set background=dark
@@ -68,7 +64,27 @@ NeoBundle 'flazz/vim-colorschemes'
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
-
+NeoBundle 'Shougo/neocomplcache'
+let g:acp_enableAtStartup = 0
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_min_syntax_length = 1
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : ''
+    \ }
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+				  return neocomplcache#smart_close_popup() . "\<CR>"
+	endfunction
+inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 "Required:
 "call neobundle#end()
 
