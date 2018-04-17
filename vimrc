@@ -12,9 +12,12 @@ set smartcase
 set title
 set hlsearch
 set noswapfile
-nnoremap <Esc><Esc> :nohlsearch<CR>
+set pumheight=10
+set cursorline
+hi clear Cursorline
+nnoremap <silent><Esc><Esc> :nohlsearch<CR>
 nmap ss :source ~/.vimrc<CR>
-nmap te :terminal<CR>
+nmap TT :terminal<CR>
 set whichwrap=b,s,h,l,<,>,[,],~
 set backspace=indent,eol,start
 set wildmenu
@@ -57,11 +60,12 @@ call dein#add('/home/koki/.cache/dein/repos/github.com/Shougo/dein.vim')
     nnoremap <C-p> gT
  call dein#add('jistr/vim-nerdtree-tabs')
     if argc()==1
-      let g:nerdtree_tabs_open_on_console_startup=0
+      let g:nerdtree_tabs_open_on_console_startup=1
     end
  call dein#add('Yggdroot/indentLine')
  call dein#add('thinca/vim-quickrun')
-    nmap qq :QuickRun<CR><C-w>40>
+    nmap qq :QuickRun<CR><C-w><C-w>
+    nmap <C-z><C-z> :q<CR>
     let g:quickrun_config={'*':{'split':'vertical'} }
     set splitright
  call dein#add('Townk/vim-autoclose') 
@@ -97,13 +101,18 @@ call dein#add('/home/koki/.cache/dein/repos/github.com/Shougo/dein.vim')
   call dein#add('jmcantrell/vim-virtualenv')
   call dein#add('hynek/vim-python-pep8-indent')
   call dein#add('tomasr/molokai')
+  call dein#add('romainl/Apprentice')
+  call dein#add('sjl/badwolf')
+  call dein#add('jacoborus/tender.vim')
+  call dein#add('Shougo/unite.vim')
 "You can specify revision/branch/tag.
 " call dein#add('Shougo/deol.nvim')
 " Required:
 call dein#end()
     set background=dark
-    colorscheme molokai
+    colorscheme tender
     syntax on
+    set t_Co=256
   call dein#save_state()
 endif
 " Required:
