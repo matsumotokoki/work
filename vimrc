@@ -14,27 +14,30 @@ set hlsearch
 set noswapfile
 set pumheight=10
 set cursorline
+set scrolloff=22
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up>   gk
+nnoremap <C-j> <C-w>j
+nnoremap <C-h> <C-w>h
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 hi clear Cursorline
 nnoremap <silent><Esc><Esc> :nohlsearch<CR>
 nmap ss :source ~/.vimrc<CR>
-nmap TT :terminal<CR>
+nnoremap <C-t> :terminal<CR>
 set whichwrap=b,s,h,l,<,>,[,],~
 set backspace=indent,eol,start
 set wildmenu
-set history=1000
+set history=500
 set clipboard=unnamed,autoselect
-"if &term =~ "xterm"
-"   let &t_SI .= "\e[?2004h"
-"   let &t_EI .= "\e[?2004l"
-"   let &pastetoggle = "\e[201~"
-
-"   function XTermPasteBegin(ret)
-"       set paste
-"       return a:ret
-"   endfunction
-
-"   inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-"endif
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -52,7 +55,7 @@ call dein#add('/home/koki/.cache/dein/repos/github.com/Shougo/dein.vim')
     set laststatus=2 " ステータスラインを常に表示
     set showmode " 現在のモードを表示
     set showcmd " 打ったコマンドをステータスラインの下に表示
-    set ruler " ステータスラインの右側にカーソルの現在位置を表示する
+    "set ruler " ステータスラインの右側にカーソルの現在位置を表示する
  call dein#add('scrooloose/nerdtree')
     let NERDTreeShowHidden = 0
     nmap tt :NERDTreeToggle<CR>
@@ -60,13 +63,13 @@ call dein#add('/home/koki/.cache/dein/repos/github.com/Shougo/dein.vim')
     nnoremap <C-p> gT
  call dein#add('jistr/vim-nerdtree-tabs')
     if argc()==1
-      let g:nerdtree_tabs_open_on_console_startup=1
+      let g:nerdtree_tabs_open_on_console_startup=0
     end
  call dein#add('Yggdroot/indentLine')
  call dein#add('thinca/vim-quickrun')
     nmap qq :QuickRun<CR><C-w><C-w>
     nmap <C-z><C-z> :q<CR>
-    let g:quickrun_config={'*':{'split':'vertical'} }
+    let g:quickrun_config={'*':{'split':'vertical30sp'} }
     set splitright
  call dein#add('Townk/vim-autoclose') 
  call dein#add('airblade/vim-gitgutter')
@@ -111,7 +114,7 @@ call dein#add('/home/koki/.cache/dein/repos/github.com/Shougo/dein.vim')
 call dein#end()
     set background=dark
     colorscheme tender
-    syntax on
+"    syntax on
     set t_Co=256
   call dein#save_state()
 endif
