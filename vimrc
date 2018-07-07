@@ -1,43 +1,3 @@
-set nu
-set fenc=utf-8
-set expandtab
-set tabstop=4
-set autoindent
-set virtualedit=onemore
-set smartindent
-set shiftwidth=2
-set incsearch
-set ignorecase
-set smartcase
-set title
-set hlsearch
-set noswapfile
-set pumheight=10
-set cursorline
-set scrolloff=22
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
-nnoremap j gj
-nnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up>   gk
-nnoremap <C-j> <C-w>j
-nnoremap <C-h> <C-w>h
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-hi clear Cursorline
-nnoremap <silent><Esc><Esc> :nohlsearch<CR>
-nmap ss :source ~/.vimrc<CR>
-nnoremap <C-t> :terminal<CR>
-set whichwrap=b,s,h,l,<,>,[,],~
-set backspace=indent,eol,start
-set wildmenu
-set history=500
-set clipboard=unnamed,autoselect
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -52,10 +12,6 @@ if dein#load_state('/home/koki/.cache/dein')
 call dein#add('/home/koki/.cache/dein/repos/github.com/Shougo/dein.vim')
  " Add or remove your plugins here:
  call dein#add('itchyny/lightline.vim')
-    set laststatus=2 " ステータスラインを常に表示
-    set showmode " 現在のモードを表示
-    set showcmd " 打ったコマンドをステータスラインの下に表示
-    "set ruler " ステータスラインの右側にカーソルの現在位置を表示する
  call dein#add('scrooloose/nerdtree')
     let NERDTreeShowHidden = 0
     nmap tt :NERDTreeToggle<CR>
@@ -112,17 +68,65 @@ call dein#add('/home/koki/.cache/dein/repos/github.com/Shougo/dein.vim')
 " call dein#add('Shougo/deol.nvim')
 " Required:
 call dein#end()
-    set background=dark
-    colorscheme tender
-"    syntax on
-    set t_Co=256
   call dein#save_state()
 endif
 " Required:
-filetype plugin indent on
+"filetype plugin indent on
 syntax enable
 " If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()
 endif
 "End dein Scripts-------------------------
+set nu
+set fenc=utf-8
+set expandtab
+set tabstop=4
+set autoindent
+set virtualedit=onemore
+set smartindent
+set shiftwidth=2
+set incsearch
+set ignorecase
+set smartcase
+set title
+set hlsearch
+set noswapfile
+set pumheight=10
+set cursorline
+set scrolloff=22
+nnoremap n nzz 
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up>   gk
+nnoremap <C-j> <C-w>j
+nnoremap <C-h> <C-w>h
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+hi clear Cursorline
+nnoremap <silent><Esc><Esc> :nohlsearch<CR>
+nmap ss :source ~/.vimrc<CR>
+nnoremap <C-t> :terminal<CR>
+set whichwrap=b,s,h,l,<,>,[,],~
+set backspace=indent,eol,start
+set wildmenu
+set history=500
+set clipboard=unnamed,autoselect
+
+"#colorscheme#
+set background=dark
+colorscheme tender
+syntax on
+set t_Co=256
+
+"#('itchyny/lightline.vim')#
+set laststatus=2 " ステータスラインを常に表示
+set showmode " 現在のモードを表示
+set showcmd " 打ったコマンドをステータスラインの下に表示
+set ruler " ステータスラインの右側にカーソルの現在位置を表示する
